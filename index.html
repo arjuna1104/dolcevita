@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DolceVita — The Sweet Life</title>
+<meta name="description" content="DolceVita (@dolcevita.tees.id) — local streetwear brand dari Indonesia. Clean silhouette, bold logo, dibuat untuk yang berani tampil apa adanya.">
+<meta property="og:title" content="DolceVita — The Sweet Life">
+<meta property="og:description" content="Local streetwear dari Indonesia. Vol. II out now.">
+<meta property="og:image" content="assets/model.jpg">
+<meta name="theme-color" content="#F4EFE4">
+<link rel="icon" href="assets/logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F4EFE4;
+    --paper: #FBF8F2;
+    --ink: #141210;
+    --ink-2: #2A2622;
+    --muted: #6E665B;
+    --line: rgba(20, 18, 16, .14);
+    --verde: #1C8A4C;
+    --ice: #46B0DA;
+    --flame: #E2452C;
+    --rose: #E46BA4;
+
+    --serif: "Instrument Serif", "Times New Roman", serif;
+    --sans: "Inter Tight", system-ui, -apple-system, sans-serif;
+    --mono: "DM Mono", ui-monospace, monospace;
+
+    --gutter: clamp(16px, 4vw, 56px);
+    --max: 1320px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font: 400 16px/1.6 var(--sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+  .label {
+    font: 500 11px/1 var(--mono);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+  .serif { font-family: var(--serif); font-weight: 400; }
+  .it { font-style: italic; }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font: 500 14px/1 var(--sans);
+    letter-spacing: .01em;
+    transition: transform .25s ease, background .25s ease, color .25s ease;
+    white-space: nowrap;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-ink { background: var(--ink); color: var(--cream); }
+  .btn-ink:hover { background: var(--flame); }
+  .btn-line { border: 1px solid var(--ink); }
+  .btn-line:hover { background: var(--ink); color: var(--cream); }
+  .btn svg { width: 16px; height: 16px; flex: none; }
+
+  /* ---------- nav ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--cream) 86%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color .3s;
+  }
+  .nav.scrolled { border-bottom-color: var(--line); }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 24px; }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand img { width: 34px; height: 34px; border-radius: 50%; }
+  .brand span { font: 400 26px/1 var(--serif); letter-spacing: -.01em; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { font-size: 14px; color: var(--muted); transition: color .2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav .btn { padding: 11px 18px; font-size: 13px; }
+
+  /* ---------- hero ---------- */
+  .hero { padding: clamp(40px, 7vw, 96px) 0 clamp(56px, 8vw, 112px); }
+  .hero .wrap {
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: clamp(32px, 5vw, 80px);
+    align-items: end;
+  }
+  .hero-meta { display: flex; gap: 18px; flex-wrap: wrap; color: var(--muted); margin-bottom: 28px; }
+  .hero-meta .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--flame); display: inline-block; margin-right: 8px; vertical-align: 1px; animation: pulse 2s infinite; }
+  @keyframes pulse { 50% { opacity: .25; } }
+  .hero h1 {
+    font: 400 clamp(76px, 15vw, 220px)/.84 var(--serif);
+    letter-spacing: -.035em;
+  }
+  .hero h1 .it { display: block; padding-left: .42em; }
+  .hero-sub {
+    max-width: 440px;
+    margin-top: 32px;
+    font-size: 18px;
+    color: var(--ink-2);
+  }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+
+  .hero-photo { position: relative; }
+  .hero-photo figure {
+    aspect-ratio: 3 / 4;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #ddd6c8;
+  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-photo figcaption {
+    display: flex; justify-content: space-between;
+    margin-top: 12px; color: var(--muted);
+  }
+  .badge {
+    position: absolute; left: -54px; top: 42px;
+    width: 124px; height: 124px;
+    color: var(--ink);
+  }
+  .badge svg { width: 100%; height: 100%; animation: spin 18s linear infinite; }
+  .badge b {
+    position: absolute; inset: 0; display: grid; place-items: center;
+    font: italic 400 30px/1 var(--serif);
+  }
+  .badge::before {
+    content: ""; position: absolute; inset: 22px; border-radius: 50%;
+    background: var(--ice);
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ---------- marquee ---------- */
+  .marquee {
+    background: var(--ink); color: var(--cream);
+    overflow: hidden; padding: 18px 0;
+  }
+  .marquee-track {
+    display: flex; width: max-content;
+    animation: slide 32s linear infinite;
+  }
+  .marquee span {
+    font: italic 400 clamp(26px, 3.4vw, 40px)/1 var(--serif);
+    padding: 0 28px; white-space: nowrap;
+  }
+  .marquee i { font-style: normal; color: var(--flame); }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  /* ---------- section heads ---------- */
+  section { scroll-margin-top: 68px; }
+  .head {
+    display: flex; justify-content: space-between; align-items: end; gap: 24px;
+    padding-bottom: 28px; margin-bottom: clamp(32px, 4vw, 56px);
+    border-bottom: 1px solid var(--line);
+  }
+  .head h2 { font: 400 clamp(44px, 6.4vw, 92px)/.95 var(--serif); letter-spacing: -.025em; }
+  .head p { max-width: 360px; color: var(--muted); }
+
+  /* ---------- collections ---------- */
+  .collections { padding: clamp(72px, 10vw, 140px) 0; }
+  .drop {
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-radius: 8px; overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .drop-media { position: relative; min-height: 560px; }
+  .drop-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .drop-body { padding: clamp(28px, 4.5vw, 64px); display: flex; flex-direction: column; }
+  .drop-body .label { display: flex; justify-content: space-between; gap: 12px; }
+  .drop-body h3 {
+    font: 400 clamp(56px, 7.5vw, 112px)/.9 var(--serif);
+    letter-spacing: -.03em;
+    margin: auto 0 20px;
+    padding-top: 48px;
+  }
+  .drop-body p { max-width: 420px; }
+  .specs { list-style: none; margin: 28px 0 32px; border-top: 1px solid currentColor; }
+  .specs li {
+    display: flex; justify-content: space-between; gap: 16px;
+    padding: 12px 0; border-bottom: 1px solid color-mix(in srgb, currentColor 22%, transparent);
+    font-size: 14px;
+  }
+  .specs li span:first-child { opacity: .6; }
+  .specs li span:last-child { text-align: right; }
+
+  .drop-ii { background: var(--ink); color: var(--cream); }
+  .drop-ii h3 .it { color: var(--ice); }
+  .drop-ii .btn { background: var(--cream); color: var(--ink); }
+  .drop-ii .btn:hover { background: var(--ice); }
+  .chip {
+    display: inline-block; padding: 6px 10px; border-radius: 999px;
+    background: var(--flame); color: #fff;
+  }
+
+  .drop-i { background: var(--paper); border: 1px solid var(--line); }
+  .drop-i .drop-media { order: 2; }
+  .drop-i h3 .it { color: var(--verde); }
+  .drop-i .btn { background: var(--verde); color: #fff; }
+  .drop-i .btn:hover { background: var(--ink); }
+  .italiano {
+    margin-top: 24px; padding-left: 16px; border-left: 2px solid var(--verde);
+    font: italic 400 19px/1.4 var(--serif); color: var(--ink-2);
+  }
+  .italiano small { display: block; margin-top: 8px; font: 400 13px/1.5 var(--sans); color: var(--muted); font-style: normal; }
+
+  /* ---------- manifesto ---------- */
+  .manifesto { background: var(--paper); padding: clamp(80px, 11vw, 160px) 0; border-block: 1px solid var(--line); }
+  .manifesto blockquote {
+    font: 400 clamp(36px, 5.4vw, 76px)/1.04 var(--serif);
+    letter-spacing: -.02em;
+    max-width: 1100px;
+  }
+  .manifesto blockquote em { color: var(--flame); }
+  .manifesto .label { color: var(--muted); margin-bottom: 32px; display: block; }
+  .pillars {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: clamp(20px, 3vw, 48px);
+    margin-top: clamp(56px, 7vw, 96px);
+  }
+  .pillar { border-top: 1px solid var(--ink); padding-top: 20px; }
+  .pillar .num { font: italic 400 44px/1 var(--serif); color: var(--muted); }
+  .pillar h4 { font: 600 18px/1.3 var(--sans); margin: 18px 0 8px; }
+  .pillar p { color: var(--muted); font-size: 15px; }
+
+  /* ---------- journal ---------- */
+  .journal { padding: clamp(72px, 10vw, 140px) 0; }
+  .rail {
+    display: grid; grid-auto-flow: column;
+    grid-auto-columns: minmax(260px, 1fr);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    padding: 0 var(--gutter) 20px;
+    margin: 0 calc(-1 * var(--gutter));
+    scrollbar-width: thin;
+  }
+  .post { scroll-snap-align: start; }
+  .post figure {
+    aspect-ratio: 4 / 5; border-radius: 6px; overflow: hidden;
+    background: #ddd6c8; position: relative;
+  }
+  .post img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+  .post:hover img { transform: scale(1.04); }
+  .post .tag {
+    position: absolute; top: 12px; left: 12px;
+    background: var(--cream); padding: 6px 9px; border-radius: 999px;
+  }
+  .post time { display: block; margin: 14px 0 6px; color: var(--muted); }
+  .post p { font: 400 22px/1.15 var(--serif); }
+  .journal-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 28px; flex-wrap: wrap; }
+  .journal-foot .label { color: var(--muted); }
+
+  /* ---------- order ---------- */
+  .order { padding: 0 0 clamp(72px, 10vw, 140px); }
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .step {
+    background: var(--paper); border: 1px solid var(--line);
+    border-radius: 8px; padding: 28px;
+    display: flex; flex-direction: column; gap: 14px; min-height: 220px;
+  }
+  .step .label { color: var(--muted); }
+  .step h4 { font: 400 34px/1 var(--serif); margin-top: auto; }
+  .step p { color: var(--muted); font-size: 15px; }
+
+  /* ---------- final cta ---------- */
+  .final {
+    background: var(--ink); color: var(--cream);
+    padding: clamp(80px, 12vw, 180px) 0 0;
+    overflow: hidden;
+  }
+  .final h2 {
+    font: 400 clamp(56px, 11vw, 168px)/.88 var(--serif);
+    letter-spacing: -.035em;
+  }
+  .final h2 .it { color: var(--rose); }
+  .final .row { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; }
+  .final p { max-width: 380px; color: color-mix(in srgb, var(--cream) 70%, transparent); margin-bottom: 20px; }
+  .final .btn-ink { background: var(--cream); color: var(--ink); }
+  .final .btn-ink:hover { background: var(--flame); color: #fff; }
+  .final .btn-line { border-color: var(--cream); }
+  .final .btn-line:hover { background: var(--cream); color: var(--ink); }
+  .final-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  footer {
+    margin-top: clamp(80px, 10vw, 140px);
+    border-top: 1px solid rgba(244, 239, 228, .16);
+    padding: 24px 0 32px;
+  }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; color: color-mix(in srgb, var(--cream) 60%, transparent); }
+  footer a:hover { color: var(--cream); }
+
+  /* ---------- reveal ---------- */
+  .js .rv { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s cubic-bezier(.2, .7, .2, 1); }
+  .js .rv.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .js .rv { opacity: 1; transform: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 960px) {
+    .nav-links { display: none; }
+    .hero .wrap { grid-template-columns: 1fr; }
+    .hero-photo { max-width: 520px; }
+    .badge { left: auto; right: 8px; top: -40px; width: 104px; height: 104px; }
+    .drop { grid-template-columns: 1fr; }
+    .drop-i .drop-media { order: 0; }
+    .drop-media { min-height: 0; aspect-ratio: 4 / 5; }
+    .drop-body h3 { padding-top: 32px; }
+    .pillars, .steps { grid-template-columns: 1fr; }
+    .head { flex-direction: column; align-items: start; }
+    .step { min-height: 0; }
+    .step h4 { margin-top: 12px; }
+  }
+  @media (max-width: 480px) {
+    .brand span { font-size: 22px; }
+    .nav .btn span { display: none; }
+    .nav .btn { padding: 11px 13px; }
+    .hero h1 .it { padding-left: .2em; }
+    .rail { grid-auto-columns: 78%; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="DolceVita, ke atas">
+      <img src="assets/logo.jpg" alt="" width="34" height="34">
+      <span>Dolce<span class="it">Vita</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#koleksi">Koleksi</a>
+      <a href="#cerita">Cerita</a>
+      <a href="#jurnal">Jurnal</a>
+      <a href="#order">Cara Order</a>
+    </div>
+    <a class="btn btn-ink" href="https://id.shp.ee/nZTuSPoa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      <span>Shop di Shopee</span>
+    </a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <div class="hero-meta label">
+        <span><i class="dot"></i>Vol. II — Out now</span>
+        <span>Local brand · Indonesia</span>
+      </div>
+      <h1>La Dolce <span class="it">Vita</span></h1>
+      <p class="hero-sub">Bukan cuma soal apa yang kamu pakai — tapi bagaimana kamu mengekspresikan diri. Tee oversized dengan siluet bersih dan grafis yang bicara lebih keras.</p>
+      <div class="hero-cta">
+        <a class="btn btn-ink" href="https://id.shp.ee/nZTuSPoa" target="_blank" rel="noopener">
+          Beli sekarang
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn btn-line" href="#koleksi">Lihat koleksi</a>
+      </div>
+    </div>
+
+    <div class="hero-photo rv">
+      <div class="badge" aria-hidden="true">
+        <svg viewBox="0 0 100 100">
+          <defs><path id="circ" d="M50,50 m-40,0 a40,40 0 1,1 80,0 a40,40 0 1,1 -80,0"/></defs>
+          <text font-family="DM Mono, monospace" font-size="9.4" letter-spacing="2.6" fill="currentColor">
+            <textPath href="#circ">THE SWEET LIFE · VOL. II · OUT NOW ·</textPath>
+          </text>
+        </svg>
+        <b>II</b>
+      </div>
+      <figure><img src="assets/model.jpg" alt="Model memakai DolceVita Vol. II tee putih dengan grafis dadu biru dan api" width="480" height="640"></figure>
+      <figcaption class="label"><span>Vol. II — Dice tee</span><span>@dolcevita.tees.id</span></figcaption>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Save your wallet <i>✦</i></span><span>Level up the fit <i>✦</i></span><span>Vol. II out now <i>✦</i></span><span>La dolce vita <i>✦</i></span><span>Unapologetically you <i>✦</i></span>
+    <span>Save your wallet <i>✦</i></span><span>Level up the fit <i>✦</i></span><span>Vol. II out now <i>✦</i></span><span>La dolce vita <i>✦</i></span><span>Unapologetically you <i>✦</i></span>
+  </div>
+</div>
+
+<section class="collections" id="koleksi">
+  <div class="wrap">
+    <div class="head rv">
+      <h2>Koleksi</h2>
+      <p>Dua drop, satu semangat. Setiap volume dibuat terbatas — begitu habis, ya habis.</p>
+    </div>
+
+    <article class="drop drop-ii rv">
+      <div class="drop-media">
+        <img src="assets/detail.jpg" alt="Close-up grafis dadu es biru bertuliskan Dolce Vita dengan api merah" loading="lazy" width="361" height="640">
+      </div>
+      <div class="drop-body">
+        <div class="label"><span>Drop 02 · 5 Maret 2026</span><span class="chip">Terbaru</span></div>
+        <h3>Vol. <span class="it">II</span></h3>
+        <p>Dadu es bertuliskan <em>Dolce Vita</em>, dibakar api merah. Grafis paling berani kami sejauh ini — dicetak di atas tee putih oversized yang gampang dipadukan dengan apa saja.</p>
+        <ul class="specs">
+          <li><span>Warna</span><span>White</span></li>
+          <li><span>Fit</span><span>Oversized</span></li>
+          <li><span>Grafis</span><span>Ice dice &amp; flame, full color</span></li>
+        </ul>
+        <div><a class="btn" href="https://id.shp.ee/nZTuSPoa" target="_blank" rel="noopener">Ambil Vol. II di Shopee
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div>
+      </div>
+    </article>
+
+    <article class="drop drop-i rv">
+      <div class="drop-media">
+        <img src="assets/vol1.jpg" alt="DolceVita Vol. I tee cream dengan logo DV hijau di depan dan tulisan Dolcevita bergambar bunga di belakang" loading="lazy" width="361" height="640">
+      </div>
+      <div class="drop-body">
+        <div class="label"><span>Drop 01 · Juli 2025</span><span>Verde</span></div>
+        <h3>Vol. <span class="it">I</span></h3>
+        <p>Tempat semuanya dimulai. Monogram DV di dada, script <em>Dolcevita</em> dan bunga di punggung — hijau di atas cream, tenang tapi tetap punya karakter.</p>
+        <p class="italiano">“Dolcevita è una presentazione di esclusività ed eleganza…”
+          <small>Tercetak di punggung — artinya: Dolcevita adalah presentasi eksklusivitas dan keanggunan, karya seni terbatas tentang pakaian dan gaya hidup.</small></p>
+        <ul class="specs">
+          <li><span>Warna</span><span>Cream / Green print</span></li>
+          <li><span>Depan</span><span>DV monogram</span></li>
+          <li><span>Belakang</span><span>Script &amp; flower</span></li>
+        </ul>
+        <div><a class="btn" href="https://id.shp.ee/nZTuSPoa" target="_blank" rel="noopener">Cek stok di Shopee
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M9 7h8v8"/></svg></a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="manifesto" id="cerita">
+  <div class="wrap">
+    <span class="label rv">Cerita kami — “the sweet life”</span>
+    <blockquote class="rv">Gampang dipakai, gampang di-styling, tapi <em class="it">nggak pernah</em> membosankan. Karena kadang, yang kamu butuhkan cuma <span class="it">satu piece</span> yang bicara lebih keras dari yang lain.</blockquote>
+
+    <div class="pillars">
+      <div class="pillar rv">
+        <div class="num">01</div>
+        <h4>Siluet bersih</h4>
+        <p>Potongan oversized yang simpel — jadi fondasi untuk outfit apa pun, dari jeans baggy sampai celana kerja.</p>
+      </div>
+      <div class="pillar rv">
+        <div class="num">02</div>
+        <h4>Logo yang berani</h4>
+        <p>Grafis penuh warna yang jadi pusat perhatian. Minimal di bentuk, playful di detail.</p>
+      </div>
+      <div class="pillar rv">
+        <div class="num">03</div>
+        <h4>Jiwa Gen Z</h4>
+        <p>Real, ekspresif, dan tanpa minta maaf jadi diri sendiri. Dibuat di Indonesia, untuk kamu yang tahu maunya.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="journal" id="jurnal">
+  <div class="wrap">
+    <div class="head rv">
+      <h2>Jurnal</h2>
+      <p>Perjalanan DolceVita dari feed Instagram — dari drop pertama sampai lookbook terbaru.</p>
+    </div>
+
+    <div class="rail" tabindex="0" aria-label="Jurnal DolceVita, geser ke samping">
+      <a class="post" href="https://www.instagram.com/dolcevita.tees.id/p/DXEmZflEUOE/" target="_blank" rel="noopener">
+        <figure><img src="assets/lookbook.jpg" alt="Lookbook La Dolce Vita: model di ruang kaca memakai Vol. II tee" loading="lazy" width="512" height="640"><span class="tag label">Lookbook</span></figure>
+        <time class="label" datetime="2026-04-13">13 April 2026</time>
+        <p>La Dolce Vita — one piece that speaks louder.</p>
+      </a>
+      <a class="post" href="https://www.instagram.com/dolcevita.tees.id/p/DUnl5qYkW90/" target="_blank" rel="noopener">
+        <figure><img src="assets/model.jpg" alt="Model berdiri di depan pintu baja memakai Vol. II tee" loading="lazy" width="480" height="640"><span class="tag label">Teaser</span></figure>
+        <time class="label" datetime="2026-02-11">11 Februari 2026</time>
+        <p>Save your wallet. Dolcevita will be ready soon.</p>
+      </a>
+      <a class="post" href="https://www.instagram.com/dolcevita.tees.id/reel/DUdWRZ-EVM0/" target="_blank" rel="noopener">
+        <figure><img src="assets/detail.jpg" alt="Close-up grafis dadu dan api pada tee Vol. II" loading="lazy" width="361" height="640"><span class="tag label">Reel</span></figure>
+        <time class="label" datetime="2026-02-07">7 Februari 2026</time>
+        <p>Save your wallet — Vol. II coming soon.</p>
+      </a>
+      <a class="post" href="https://www.instagram.com/dolcevita.tees.id/p/DULkFJOkrJj/" target="_blank" rel="noopener">
+        <figure><img src="assets/release.jpg" alt="Poster New Released: DolceVita Vol. II rilis 5 Maret 2026" loading="lazy" width="512" height="640"><span class="tag label">Announcement</span></figure>
+        <time class="label" datetime="2026-01-31">31 Januari 2026</time>
+        <p>Level up the fit. Vol. II rilis 5 Maret.</p>
+      </a>
+      <a class="post" href="https://www.instagram.com/dolcevita.tees.id/reel/DMqLhVOyVfP/" target="_blank" rel="noopener">
+        <figure><img src="assets/vol1.jpg" alt="Tee Vol. I cream dengan print hijau, tampak depan dan belakang" loading="lazy" width="361" height="640"><span class="tag label">Drop 01</span></figure>
+        <time class="label" datetime="2025-07-28">28 Juli 2025</time>
+        <p>Vol. I — tempat semuanya dimulai.</p>
+      </a>
+    </div>
+
+    <div class="journal-foot">
+      <span class="label">← Geser untuk lihat lebih →</span>
+      <a class="btn btn-line" href="https://www.instagram.com/dolcevita.tees.id/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+        Follow @dolcevita.tees.id
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="order" id="order">
+  <div class="wrap">
+    <div class="head rv">
+      <h2>Cara <span class="it">order</span></h2>
+      <p>Semua transaksi lewat toko resmi kami di Shopee — aman, cepat, dan bisa dilacak.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv">
+        <span class="label">Langkah 01</span>
+        <h4>Pilih piece-mu</h4>
+        <p>Buka toko DolceVita di Shopee, pilih volume dan ukuran yang pas.</p>
+      </div>
+      <div class="step rv">
+        <span class="label">Langkah 02</span>
+        <h4>Checkout</h4>
+        <p>Bayar dengan metode favoritmu. Stok terbatas — jangan kelamaan di keranjang.</p>
+      </div>
+      <div class="step rv">
+        <span class="label">Langkah 03</span>
+        <h4>Pakai &amp; tag kami</h4>
+        <p>Upload fit-mu dan tag <b>@dolcevita.tees.id</b> — siapa tahu kamu masuk feed kami.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <div class="row">
+      <h2 class="rv">Live the<br><span class="it">sweet life.</span></h2>
+      <div class="rv">
+        <p>Vol. II sudah tersedia. Ambil sebelum kehabisan, dan jadilah yang pertama tahu drop berikutnya lewat Instagram.</p>
+        <div class="final-cta">
+          <a class="btn btn-ink" href="https://id.shp.ee/nZTuSPoa" target="_blank" rel="noopener">Shop di Shopee</a>
+          <a class="btn btn-line" href="https://www.instagram.com/dolcevita.tees.id/" target="_blank" rel="noopener">Instagram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="wrap label">
+      <span>© 2026 DolceVita · Made in Indonesia</span>
+      <a href="https://www.instagram.com/dolcevita.tees.id/" target="_blank" rel="noopener">@dolcevita.tees.id</a>
+    </div>
+  </footer>
+</section>
+
+<script>
+  document.documentElement.classList.add('js');
+
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 8);
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.rv').forEach((el) => io.observe(el));
+</script>
+</body>
+</html>
